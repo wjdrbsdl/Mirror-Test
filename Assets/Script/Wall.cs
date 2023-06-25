@@ -96,7 +96,7 @@ public class Wall : MonoBehaviour
 
         Vector2 test = _come - 2 * nomalVectors[(int)line] * (Vector2.Dot(_come, nomalVectors[(int)line])); //위 과정을 대입하고 정리된 식
         //Debug.Log("계산된 벡터" + test);
-
+        Debug.Log("디버그 체크에서 디버그 추가");
         return outVector;
     }
 }
