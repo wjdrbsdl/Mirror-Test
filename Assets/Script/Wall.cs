@@ -13,57 +13,53 @@ public class Wall : MonoBehaviour
     //라인에 맞게 기본 벡터 해놓고 
     public Vector2[] nomalVectors = { Vector2.down, Vector2.left, Vector2.up, Vector2.right }; //반사되는 법선 벡터 방향
 
-    public float mainSlope;
+    public float rectSlope;
 
     private void Start()
     {
-        CalVertax();
+        CalSlope();
     }
 
-    private void CalVertax()
+    private void CalSlope()
     {
         //사각형의 4 정점을 오른쪽 위 부터 시계방향으로 체크 해놓음. 
         float width = transform.localScale.x;
         float height = transform.localScale.y;
 
      //   Debug.Log("초기 매인 슬로프 기울기 계산 가로" + halfWidth + "세로" + halfHeight);
-        mainSlope = height / width;
+        rectSlope = height / width;
     }
 
     public Vector2 ReflectBall(Transform _ballPos, Vector2 _come)
     {
+        //부딪혔을 때 퉁겨낼 방향을 구해서 리턴
         Vector2 outVector = new Vector2();
 
-        //부딪혔을 때 퉁겨낼 방향을 구해서 리턴
+        
+        //부딪힌 면을 구해서 법선벡터 도출 
         float gapX = _ballPos.position.x - transform.position.x; 
         float gapY = _ballPos.position.y - transform.position.y;
 
         RectengleLine line;
 
-      //  Debug.Log("부딪힌 위치에서의 벡터는" + gapX + " ," + gapY);
+        //  Debug.Log("부딪힌 위치에서의 벡터는" + gapX + " ," + gapY);
         //수평으로 꽂힌 경우 
         if (gapX == 0)
         {
             if (0 <= gapY)
-            {
                 line = RectengleLine.UpLine;
-           //     Debug.Log("수평에서 부딪힌 경우 위쪽");
-            }
             else
-            {
                 line = RectengleLine.DownLine;
-            //    Debug.Log("수평에서 부딪힌 경우 위쪽");
-            }
                 
         }
         else
         {
             
             float absolutSlope = Mathf.Abs( gapY / gapX);
-         //   Debug.Log("수평이 아닌 경우 기울기를 구함"+ absolutSlope +"절대 슬로프와 비교 "+mainSlope);
-            if (mainSlope <= absolutSlope)
+          //  Debug.Log("수평이 아닌 경우 기울기를 구함"+ absolutSlope +"절대 슬로프와 비교 "+mainSlope);
+            if (rectSlope <= absolutSlope)
             {
-          //      Debug.Log("구와의 절대 슬로프가 더 큰 경우 위 아니면 아래 라인");
+          //  Debug.Log("구와의 기울기가 큰 경우 위 아니면 아래 라인");
                 if (0 <= gapY)
                     line = RectengleLine.UpLine;
                 else
@@ -71,7 +67,7 @@ public class Wall : MonoBehaviour
             }
             else
             {
-          //      Debug.Log("구와의 절대 슬로프가 더 작은 경우 왼쪽 아니면 오른쪽");
+          // 기울기가 작으면 좌우 면에 맞은것
                 if (0 <= gapX)
                     line = RectengleLine.RightLine;
                 else
@@ -83,6 +79,7 @@ public class Wall : MonoBehaviour
         //  Debug.Log("부딪힌 라인은 " + line);
 
         //반사된 벡터 구하기 
+
       //  Debug.Log("들어온 벡터값" + _come);
         float length = -1* Vector2.Dot(_come, nomalVectors[(int)line]);
       //  Debug.Log("투영에 필요한 길이 " + length); //법선 * 같이 나가는 방향의 벡터 
@@ -99,4 +96,5 @@ public class Wall : MonoBehaviour
 
         return outVector;
     }
+
 }
