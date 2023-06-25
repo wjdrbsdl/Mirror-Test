@@ -95,6 +95,9 @@ public class Wall : MonoBehaviour
         //Debug.Log("계산된 벡터" + test);
 
         Debug.Log("데스크에서 디버그 추가");
+
+        Debug.Log("디버그 체크에서 디버그 추가");
+
         return outVector;
     }
 
