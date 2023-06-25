@@ -99,4 +99,9 @@ public class Wall : MonoBehaviour
         Debug.Log("디버그 체크에서 디버그 추가");
         return outVector;
     }
+
+    private void DebugTestMethod()
+    {
+
+    }
 }
