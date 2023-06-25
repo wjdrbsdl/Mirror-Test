@@ -101,4 +101,8 @@ public class Wall : MonoBehaviour
         return outVector;
     }
 
+    private void DeskMethodTest()
+    {
+
+    }
 }
