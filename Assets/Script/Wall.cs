@@ -105,4 +105,10 @@ public class Wall : MonoBehaviour
     {
 
     }
+
+    private void DebugTestMethod()
+    {
+
+    }
+
 }
