@@ -29,6 +29,6 @@ public class Ball : NetworkBehaviour
         }
 
         moveVector = colliededWall.ReflectBall(transform, moveVector);
-
+        Debug.Log("브랜치 변경");
     }
 }
