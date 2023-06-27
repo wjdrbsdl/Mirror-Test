@@ -29,6 +29,8 @@ public class TestBall : MonoBehaviour
         }
 
         moveVector = colliededWall.ReflectBall(transform, moveVector);
-
+        Debug.Log("톨토이즈 테스트!");
     }
+
+    
 }
