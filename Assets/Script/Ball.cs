@@ -29,6 +29,8 @@ public class Ball : NetworkBehaviour
         }
 
         moveVector = colliededWall.ReflectBall(transform, moveVector);
+        Debug.Log("¿©±ä Æ®··Å©");
 
+           
     }
 }
