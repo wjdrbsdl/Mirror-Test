@@ -24,12 +24,12 @@ public class Ball : NetworkBehaviour
         Wall colliededWall = collision.gameObject.GetComponent<Wall>();
         if (colliededWall == null)
         {
-            Debug.LogError("º®ÀÌ ¾Æ´Ñ °Í°ú ºÎµúÇûÀ½");
+            Debug.LogError("ë²½ì´ ì•„ë‹Œ ê²ƒê³¼ ë¶€ë”ªí˜”ìŒ");
             return;
         }
 
         moveVector = colliededWall.ReflectBall(transform, moveVector);
-        Debug.Log("¿©±ä Æ®··Å©");
+        Debug.Log("ì—¬ê¸´ ë¡œì»¬");
 
            
     }
